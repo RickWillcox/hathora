@@ -9,14 +9,14 @@ class {{typeString}}:
 {{#each properties}}
   var {{@key}}
 {{/each}}
-  func _init(sbp: StreamPeerBuffer):
+  func _init(spb: StreamPeerBuffer):
 {{#each properties}}
 {{#if (eq type "float")}}
-    {{@key}} = sbp.get_float()
+    {{@key}} = spb.get_float()
 {{else if (eq type "int")}}
-    {{@key}} = sbp.get_8()
+    {{@key}} = spb.get_8()
 {{else if (eq type "object")}}
-    {{@key}} = {{typeString}}.new(sbp)
+    {{@key}} = {{typeString}}.new(spb)
 {{/if}}
 {{/each}}
 
